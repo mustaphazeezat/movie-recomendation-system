@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r /code/requirements.txt
 COPY ./app /code/app
 
 # Copy correlation matrix
-COPY ./app/corr_matrix.joblib /code/app/corr_matrix.joblib
+COPY ./app/corr_matrix_sparse.joblib /code/app/corr_matrix_sparse.joblib
 # Expose port (change if your app uses a different port)
 EXPOSE 8000
 

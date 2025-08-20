@@ -2,8 +2,14 @@ import os
 import pandas as pd
 import joblib
 
-corr_matrix_path = os.path.join(os.path.dirname(__file__), "corr_matrix.joblib")
-corrMatrix = joblib.load(corr_matrix_path)
+
+#   Load the sparse correlation matrix
+
+corr_matrix_path = os.path.join(os.path.dirname(__file__), "corr_matrix_sparse.joblib")
+sparse_matrix, movie_titles = joblib.load(corr_matrix_path)
+corrMatrix = pd.DataFrame(sparse_matrix.toarray(), index=movie_titles, columns=movie_titles)
+
+
 
 def recommender(userRatingDict):
     similarMovies = pd.Series(dtype='float64')
